@@ -11,11 +11,13 @@ class Motor:
         self.motor4 = gpiozero.DigitalOutputDevice(14)
 
         #Set the speed of the motors
-        self.pwm.value = 0.2 
-        self.pwm2.value = 0.2 
+        self.pwm.value = 0 
+        self.pwm2.value = 0 
     
     #Go forward
     def forward(self):
+        self.pwm.value = 0.4
+        self.pwm2.value = 0.4
         self.motor.on()
         self.motor2.off()
         self.motor3.on()
@@ -23,6 +25,8 @@ class Motor:
     
     #Turn right
     def rotateRight(self):
+        self.pwm.value = 0.6
+        self.pwm2.value = 0.7
         self.motor.on()
         self.motor2.off()
         self.motor3.off()
@@ -30,6 +34,8 @@ class Motor:
     
     #Turn left
     def rotateLeft(self):
+        self.pwm.value = 0.6
+        self.pwm2.value = 0.7
         self.motor.off()
         self.motor2.on()
         self.motor3.on()
@@ -37,6 +43,8 @@ class Motor:
     
     #Go backward
     def backward(self):
+        self.pwm.value = 0.4
+        self.pwm2.value = 0.4
         self.motor.off()
         self.motor2.on()
         self.motor3.off()

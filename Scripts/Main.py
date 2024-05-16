@@ -2,6 +2,7 @@ import math
 import sys
 import time
 import gpiozero
+import threading
 
 from Dijkstra import Dijkstra
 from Map import Map
@@ -13,6 +14,7 @@ from Navigation import Navigation
 motor = Motor()
 infrared = InfraredSensor()
 carte = Map.carte
+lock = threading.Lock()
 
 #Test de l'algorithme
 # depart = 1
@@ -28,4 +30,16 @@ carte = Map.carte
 
 #main
 
-Navigation.parcourir_carte(1, 15) #Départ et destination
+# Navigation.parcourir_carte(1, 15) #Départ et destination
+while True:
+    if(infrared.IsOnPath() == False):
+        motor.stop()
+        time.sleep(0.1)
+    elif(infrared.IsOnLeft()):
+        motor.rotateLeft()
+        time.sleep(0.1)
+    elif(infrared.IsOnRight()):
+        motor.rotateRight()
+        time.sleep(0.1)
+    else:
+        motor.forward()
