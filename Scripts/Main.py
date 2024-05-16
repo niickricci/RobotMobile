@@ -17,8 +17,9 @@ carte = Map.carte
 lock = threading.Lock()
 
 #Test de l'algorithme
-# depart = 1
-# destination = 15
+depart = 1
+current_node = depart
+destination = 9
 # distance, chemin = Dijkstra.Chemin(carte, depart, destination)
 
 # if chemin:
@@ -31,15 +32,22 @@ lock = threading.Lock()
 #main
 
 # Navigation.parcourir_carte(1, 15) #Départ et destination
-while True:
+while current_node != destination:
     if(infrared.IsOnPath() == False):
         motor.stop()
-        time.sleep(0.1)
+        time.sleep(0.3)
+        current_node = current_node+1
+        motor.rotateNode(current_node)
+        time.sleep(1)
     elif(infrared.IsOnLeft()):
         motor.rotateLeft()
         time.sleep(0.1)
+        motor.stop()
     elif(infrared.IsOnRight()):
         motor.rotateRight()
         time.sleep(0.1)
+        motor.stop()
     else:
         motor.forward()
+print("Arrivé à destination" + " | Current node: " + str(destination))
+motor.stop()

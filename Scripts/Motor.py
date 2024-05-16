@@ -1,4 +1,5 @@
 import gpiozero
+import time
 
 class Motor:
     def __init__(self):
@@ -25,8 +26,8 @@ class Motor:
     
     #Turn right
     def rotateRight(self):
-        self.pwm.value = 0.6
-        self.pwm2.value = 0.7
+        self.pwm.value = 0.5
+        self.pwm2.value = 0.6
         self.motor.on()
         self.motor2.off()
         self.motor3.off()
@@ -34,8 +35,8 @@ class Motor:
     
     #Turn left
     def rotateLeft(self):
-        self.pwm.value = 0.6
-        self.pwm2.value = 0.7
+        self.pwm.value = 0.5
+        self.pwm2.value = 0.6
         self.motor.off()
         self.motor2.on()
         self.motor3.on()
@@ -56,3 +57,35 @@ class Motor:
         self.motor2.off()
         self.motor3.off()
         self.motor4.off()
+        
+    def rotateNode(self, current_node):
+        #Point 7
+        if(current_node == 2):
+            self.forward()
+            time.sleep(1)
+        #Point 6
+        if(current_node == 3):
+            self.rotateRight()
+            time.sleep(2)
+        #Point 8
+        if(current_node == 4): 
+            self.rotateLeft()
+            time.sleep(2)
+        #Point 9
+        if(current_node == 5): 
+            self.rotateLeft()
+            time.sleep(0.3)
+        #Point 15
+        if(current_node == 6): 
+            self.forward()
+            time.sleep(0.3)
+        #Point 14
+        if(current_node == 7):
+            self.rotateRight()
+            time.sleep(0.3)
+        #Point 17
+        if(current_node == 8): 
+            self.forward()
+            time.sleep(0.3)
+        
+        
