@@ -30,24 +30,26 @@ destination = 9
 #     print("Il n'y a pas de chemin possible de {} à {}.".format(depart, destination))
 
 #main
-
+        
 # Navigation.parcourir_carte(1, 15) #Départ et destination
 while current_node != destination:
-    if(infrared.IsOnPath() == False):
+    while not infrared.IsOnPath():
         motor.stop()
-        time.sleep(0.3)
-        current_node = current_node+1
-        motor.rotateNode(current_node)
         time.sleep(1)
-    elif(infrared.IsOnLeft()):
-        motor.rotateLeft()
-        time.sleep(0.1)
+        current_node += 1
+        print("Current node:", current_node)
+        motor.rotateNode(current_node)
+        time.sleep(0.35)
+    
+    while infrared.IsOnLeft() or infrared.IsOnRight():
+        if infrared.IsOnLeft():
+            motor.rotateLeft()
+        elif infrared.IsOnRight():
+            motor.rotateRight()
+        time.sleep(0.15)
         motor.stop()
-    elif(infrared.IsOnRight()):
-        motor.rotateRight()
-        time.sleep(0.1)
-        motor.stop()
-    else:
-        motor.forward()
-print("Arrivé à destination" + " | Current node: " + str(destination))
+    
+    motor.forward()
+
+print("Arrivé à destination | Current node:", destination)
 motor.stop()
