@@ -17,8 +17,8 @@ class Motor:
     
     #Go forward
     def forward(self):
-        self.pwm.value = 0.32
-        self.pwm2.value = 0.32
+        self.pwm.value = 0.5
+        self.pwm2.value = 0.5
         self.motor.on()
         self.motor2.off()
         self.motor3.on()
@@ -26,8 +26,8 @@ class Motor:
     
     #Turn right
     def rotateRight(self):
-        self.pwm.value = 0.5
-        self.pwm2.value = 0.6
+        self.pwm.value = 0.55
+        self.pwm2.value = 0.52
         self.motor.on()
         self.motor2.off()
         self.motor3.off()
@@ -35,8 +35,8 @@ class Motor:
     
     #Turn left
     def rotateLeft(self):
-        self.pwm.value = 0.5
-        self.pwm2.value = 0.6
+        self.pwm2.value = 0.5
+        self.pwm2.value = 0.75
         self.motor.off()
         self.motor2.on()
         self.motor3.on()
@@ -66,7 +66,8 @@ class Motor:
         #Point 6
         if(current_node == 3):
             self.rotateRight()
-            time.sleep(2)
+            #self.rotateLeft()
+            time.sleep(1.8)
         #Point 8
         if(current_node == 4): 
             self.rotateLeft()
@@ -81,8 +82,8 @@ class Motor:
             time.sleep(0.1)
         #Point 14
         if(current_node == 7):
-            # self.rotateRight()
-            self.rotateLeft()
+            self.rotateRight()
+            #self.rotateLeft()
             time.sleep(1.5)
         #Point 17
         if(current_node == 8): 
