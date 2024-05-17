@@ -26,8 +26,8 @@ class Motor:
     
     #Turn right
     def rotateRight(self):
-        self.pwm.value = 0.55
-        self.pwm2.value = 0.52
+        self.pwm.value = 0.615
+        self.pwm2.value = 0.53
         self.motor.on()
         self.motor2.off()
         self.motor3.off()
@@ -36,7 +36,7 @@ class Motor:
     #Turn left
     def rotateLeft(self):
         self.pwm2.value = 0.5
-        self.pwm2.value = 0.75
+        self.pwm2.value = 0.76
         self.motor.off()
         self.motor2.on()
         self.motor3.on()
@@ -57,37 +57,73 @@ class Motor:
         self.motor2.off()
         self.motor3.off()
         self.motor4.off()
-        
-    def rotateNode(self, current_node):
-        #Point 7
+    #Chemin 1
+    def rotatenode(self, current_node):
+        #point 7
         if(current_node == 2):
             self.forward()
             time.sleep(0.1)
-        #Point 6
+        #point 6
         if(current_node == 3):
-            self.rotateRight()
-            #self.rotateLeft()
+            self.rotateright()
+            #self.rotateleft()
             time.sleep(1.8)
-        #Point 8
+        #point 8
         if(current_node == 4): 
-            self.rotateLeft()
+            self.rotateleft()
             time.sleep(1.5)
-        #Point 9
+        #point 9
         if(current_node == 5): 
-            self.rotateLeft()
+            self.rotateleft()
             time.sleep(1.5)
-        #Point 15
+        #point 15
         if(current_node == 6): 
             self.forward()
             time.sleep(0.1)
-        #Point 14
+        #point 14
         if(current_node == 7):
-            self.rotateRight()
-            #self.rotateLeft()
+            self.rotateright()
+            #self.rotateleft()
             time.sleep(1.5)
-        #Point 17
+        #point 17
         if(current_node == 8): 
             self.forward()
             time.sleep(0.1)
+    ##Chemin 2        
+    # def rotateNode(self, current_node):
+       
+        # #Point 15
+        # if(current_node == 2):
+            # self.rotateLeft()
+            # #self.rotateLeft()
+            # time.sleep(1.5)
+        # #Point 14
+        # if(current_node == 3): 
+            # self.forward()
+            # time.sleep(0.1)
+        # #Point 16
+        # if(current_node == 4): 
+            # self.rotateRight()
+            # time.sleep(1.5)
+    ##Chemin 3     
+    # def rotateNode(self, current_node):
+       
+        # #Point 15
+        # if(current_node == 2):
+            # self.rotateRight()
+            # time.sleep(1.5)
+        # #Point 14
+        # if(current_node == 3): 
+            # self.forward()
+            # time.sleep(0.1)
+        # #Point 16
+        # if(current_node == 4): 
+            # self.forward()
+            # time.sleep(0.1)
+        # if(current_node == 5): 
+            # self.rotateLeft()
+            # time.sleep(1.5)
+        
+        
         
         
